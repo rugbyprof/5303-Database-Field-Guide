@@ -24,13 +24,13 @@ The name means "no indexes, 10 thousand purchases". Apart from the automatic
 `_id` index (and a unique index on `products.product_name`), nothing is indexed.
 That's deliberate: a later course topic is measuring what indexes do.
 
-| Collection      | Documents | Used in this course                         |
-| --------------- | --------- | ------------------------------------------- |
-| `customers`     | 500       | Customer dropdown, cards, registration      |
-| `products`      | 100       | Product dropdown, details, search           |
-| `purchases`     | 10,000    | Purchase history, recording purchases       |
-| `counters`      | 1         | Handing out the next integer `_id`          |
-| `monthly_sales` | ~8,000    | Pre-computed totals (lesson 07 example)     |
+| Collection      | Documents | Used in this course                     |
+| --------------- | --------- | --------------------------------------- |
+| `customers`     | 500       | Customer dropdown, cards, registration  |
+| `products`      | 100       | Product dropdown, details, search       |
+| `purchases`     | 10,000    | Purchase history, recording purchases   |
+| `counters`      | 1         | Handing out the next integer `_id`      |
+| `monthly_sales` | ~8,000    | Pre-computed totals (lesson 07 example) |
 
 ### `customers`
 
@@ -103,12 +103,12 @@ counters for customer and card IDs the same way.
 
 ## How money is handled in these lessons
 
-| Where         | Representation          | Why                                               |
-| ------------- | ----------------------- | ------------------------------------------------- |
-| MongoDB       | `Decimal128('202.11')`  | Exact; that's how the data was loaded            |
-| Python        | `decimal.Decimal`       | Exact arithmetic for totals                      |
-| JSON          | the string `"202.11"`   | JSON has no decimal type, and a string can't be rounded by accident |
-| Browser       | integer cents: `20211`  | Integer arithmetic is exact in JavaScript        |
+| Where   | Representation         | Why                                                                 |
+| ------- | ---------------------- | ------------------------------------------------------------------- |
+| MongoDB | `Decimal128('202.11')` | Exact; that's how the data was loaded                               |
+| Python  | `decimal.Decimal`      | Exact arithmetic for totals                                         |
+| JSON    | the string `"202.11"`  | JSON has no decimal type, and a string can't be rounded by accident |
+| Browser | integer cents: `20211` | Integer arithmetic is exact in JavaScript                           |
 
 The browser converts with `Math.round(Number(price) * 100)` and only displays
 dollars: `(cents / 100).toFixed(2)`.

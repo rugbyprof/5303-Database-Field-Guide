@@ -14,7 +14,7 @@ from pymongo import MongoClient
 HERE = Path(__file__).parent
 
 client = MongoClient(os.getenv("MONGO_URL", "mongodb://localhost:27017"))
-db = client[os.getenv("MONGO_DB", "noidx_10k")]
+db = client[os.getenv("MONGO_DB", "noidx_100k")]
 
 app = FastAPI()
 

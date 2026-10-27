@@ -15,12 +15,13 @@ HERE = Path(__file__).parent
 
 # Connect once, when the server starts. Every request reuses this connection.
 client = MongoClient(os.getenv("MONGO_URL", "mongodb://localhost:27017"))
-db = client[os.getenv("MONGO_DB", "noidx_10k")]
+db = client[os.getenv("MONGO_DB", "noidx_100k")]
 
 app = FastAPI()
 
 
 # ---- Converters: MongoDB document → the JSON shape the page expects ----
+
 
 def customer_out(doc):
     return {"id": doc["_id"], "name": f"{doc['first_name']} {doc['last_name']}"}
@@ -28,10 +29,15 @@ def customer_out(doc):
 
 def product_out(doc):
     # unit_price is a Decimal128. str() gives "202.11", the same shape lesson 06 sent.
-    return {"id": doc["_id"], "name": doc["product_name"], "price": str(doc["unit_price"])}
+    return {
+        "id": doc["_id"],
+        "name": doc["product_name"],
+        "price": str(doc["unit_price"]),
+    }
 
 
 # ---- Page ----
+
 
 @app.get("/")
 def page():
@@ -40,20 +46,30 @@ def page():
 
 # ---- API routes ----
 
+
 @app.get("/api/customers")
 def get_customers():
     # find(filter, projection): {} = every customer; the projection keeps only the name fields.
-    docs = db.customers.find({}, {"first_name": 1, "last_name": 1}).sort([("last_name", 1), ("first_name", 1)])
+    docs = db.customers.find({}, {"first_name": 1, "last_name": 1}).sort(
+        [("last_name", 1), ("first_name", 1)]
+    )
     return [customer_out(doc) for doc in docs]
+    # customers = {}
+    # for c in data:
+    #     customers[c["last_name"]] = c
+    # return c.values()
 
 
 @app.get("/api/products")
 def get_products():
-    docs = db.products.find({}, {"product_name": 1, "unit_price": 1}).sort("product_name", 1)
+    docs = db.products.find({}, {"product_name": 1, "unit_price": 1}).sort(
+        "product_name", 1
+    )
     return [product_out(doc) for doc in docs]
 
 
 # ---- Examples for the README: why the converters exist ----
+
 
 @app.get("/api/examples/raw-products")
 def raw_products():

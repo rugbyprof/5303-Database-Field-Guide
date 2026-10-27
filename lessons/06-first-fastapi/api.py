@@ -42,6 +42,7 @@ PRODUCTS = [
 
 # ---- Pages: send an HTML file to the browser ----
 
+
 @app.get("/")
 def page_with_button():
     return FileResponse(HERE / "06a-load-with-button.html")
@@ -52,7 +53,13 @@ def page_with_x_init():
     return FileResponse(HERE / "06b-load-with-x-init.html")
 
 
+@app.get("/cors")
+def page_with_cors():
+    return FileResponse(HERE / "06c-cors-experiment.html")
+
+
 # ---- API routes: send JSON data ----
+
 
 @app.get("/api/countries")
 def get_countries():

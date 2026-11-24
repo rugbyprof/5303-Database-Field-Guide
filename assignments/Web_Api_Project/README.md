@@ -262,7 +262,7 @@ None of these are required. Small, careful touches beat big, unfinished ones.
 
 ## 6. What to submit
 
-Put the project in a `Web_Api_Project/` folder in your course repo:
+Put the project in an `assignments/Web_Api_Project/` folder in your course repo:
 
 ```text
 Web_Api_Project/

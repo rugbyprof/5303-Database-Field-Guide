@@ -33,7 +33,7 @@ code --install-extension ms-azuretools.vscode-docker
 Open **the folder you're working in**, not your home folder:
 
 ```bash
-code ~/5303/my-repo/Performance_Project/api
+code ~/5303/my-repo/assignments/Performance_Project/api
 ```
 
 Then pick the project's venv: Command Palette → **Python: Select

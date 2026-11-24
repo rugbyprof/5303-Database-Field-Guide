@@ -2,7 +2,7 @@
 
 Assignment: [assignments/Web_Api_Project](../../assignments/Web_Api_Project/README.md)
 
-This folder is what `Web_Api_Project/` in your course repo should look like
+This folder is what `assignments/Web_Api_Project/` in your course repo should look like
 when you're done. Every file here holds only a description of what belongs
 in it: no answers and no solution code.
 
@@ -74,7 +74,9 @@ The `.gitignore` here covers the usual ones; copy it if you don't have one.
 
 The field guide's [check_completed.py](../../check_completed.py) compares
 your folder with this one and looks inside each file for work of your own.
-Run it from your course repo:
+Run it from the top of your course repo. It checks the assignment folders
+inside `assignments/`; pass `--folder` if yours are somewhere else
+(`--folder .` when they sit at the top of the repo):
 
 ```bash
 cd ~/5303/my-repo

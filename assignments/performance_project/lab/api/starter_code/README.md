@@ -96,7 +96,7 @@ Which program reads which variable:
 | `BUSY_TIMEOUT_MS` | `5000`                                        | ✓ (SQLite only; 08_concurrency) |      —      |           —           |
 
 `FIELD_GUIDE` matters only when this folder has been copied into your course
-repo (`Performance_Project/api/`). Point it at the field guide clone's
+repo (`assignments/Performance_Project/api/`). Point it at the field guide clone's
 `assignments/Performance_Project` folder: it says where to find `06_queries/` (the tests read it too). The
 PostgreSQL and MongoDB harnesses add their own settings; each engine's
 `07_explain/` lists them.

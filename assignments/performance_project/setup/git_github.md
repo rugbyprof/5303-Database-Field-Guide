@@ -5,7 +5,7 @@ Two folders on your machine, but only one repo is yours:
 | Folder                        | What it is                                          | You…                                         |
 | ----------------------------- | --------------------------------------------------- | -------------------------------------------- |
 | **5303-Database-Field-Guide** | the course materials (a clone, not your repo)       | clone it, `git pull` for updates, never edit |
-| **your course repo**          | one folder per assignment, including `Performance_Project/` | commit, push                           |
+| **your course repo**          | an `assignments/` folder with one folder per assignment, including `Performance_Project/` | commit, push |
 
 Use the course repo you already submit your other assignments from. This
 project doesn't need a repo of its own: it's one more folder in that one.
@@ -72,36 +72,38 @@ git clone https://github.com/<your-username>/<your-repo>.git my-repo
 Make sure your instructor can see it (if they ask you to, add them as a
 collaborator under **Settings → Collaborators** on GitHub).
 
-This project's work goes in `Performance_Project/`, laid out one folder per
-unit:
+Your assignments go in an `assignments/` folder at the top of the repo, one
+folder each. This project's work goes in `assignments/Performance_Project/`,
+laid out one folder per unit:
 
 ```
 my-repo/
-├── Caching_Project/             (other assignments sit beside it)
-├── Standardizing_Api_Responses/
-└── Performance_Project/
-    ├── README.md
-    ├── sqlite/
-    │   ├── FINDINGS_sqlite.md
-    │   ├── my_schema.sql
-    │   └── your_turn_checks.sql
-    ├── duckdb/
-    └── api/                     your copy of lab/api/starter_code (see below)
+└── assignments/
+    ├── Caching_Project/             (other assignments sit beside it)
+    ├── Standardizing_Api_Responses/
+    └── Performance_Project/
+        ├── README.md
+        ├── sqlite/
+        │   ├── FINDINGS_sqlite.md
+        │   ├── my_schema.sql
+        │   └── your_turn_checks.sql
+        ├── duckdb/
+        └── api/                     your copy of lab/api/starter_code (see below)
 ```
 
 ### Working on files that come from the field guide
 
 Some files start in the field guide and become yours once you fill them in,
 like [your_turn_checks.sql](../engines/01_sqlite/04_model/your_turn_checks.sql).
-Copy them into `Performance_Project/` in your repo and edit the copy.
+Copy them into `assignments/Performance_Project/` in your repo and edit the copy.
 
 **The API starter code** works from a copy too. Tell it where the field
 guide's `Performance_Project` folder is, and it finds the SQL files there:
 
 ```bash
-mkdir -p ~/5303/my-repo/Performance_Project
+mkdir -p ~/5303/my-repo/assignments/Performance_Project
 cp -R ~/5303/5303-Database-Field-Guide/assignments/Performance_Project/lab/api/starter_code \
-      ~/5303/my-repo/Performance_Project/api
+      ~/5303/my-repo/assignments/Performance_Project/api
 export FIELD_GUIDE="$HOME/5303/5303-Database-Field-Guide/assignments/Performance_Project"   # add to ~/.zshrc or ~/.bashrc
 ```
 
@@ -109,7 +111,7 @@ export FIELD_GUIDE="$HOME/5303/5303-Database-Field-Guide/assignments/Performance
 
 ```bash
 cd ~/5303/my-repo
-git add Performance_Project
+git add assignments/Performance_Project
 git commit -m "Performance SQLite 07: driver results and plan summaries"
 git push
 ```
@@ -126,5 +128,5 @@ cd ~/5303/5303-Database-Field-Guide && git pull     # "Already up to date."
 cd ~/5303/my-repo && git status                     # "On branch main"
 ```
 
-Then open your course repo on github.com and confirm `Performance_Project/`
-is there.
+Then open your course repo on github.com and confirm
+`assignments/Performance_Project/` is there.
